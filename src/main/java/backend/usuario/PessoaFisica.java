@@ -17,7 +17,7 @@ import backend.farmacia.PessoaJuridica;
 
 public class PessoaFisica extends Pessoa {
 
-    public static final String nomeArquivoUsuarios = "backend\\usuario\\RegistroUsuarios.txt";
+    public static final String nomeArquivoUsuarios = "src\\main\\java\\backend\\usuario\\RegistroUsuarios.txt";
     
     private String cpf;
     private Endereco endereco;
@@ -241,7 +241,7 @@ public class PessoaFisica extends Pessoa {
     }
 
     public String getNomeArquivoUsos(){
-        return "backend\\usuario\\arquivosUsosUsuarios\\" + "Uso" + this.getCpf() + ".txt";
+        return "src\\main\\java\\backend\\usuario\\arquivosUsosUsuarios\\" + "Uso" + this.getCpf() + ".txt";
     }
 
     @Override

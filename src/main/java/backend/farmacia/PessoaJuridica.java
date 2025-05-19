@@ -17,7 +17,7 @@ import backend.Medicamento;
 
 public class PessoaJuridica extends Pessoa{
 
-    public static final String nomeArquivoFarmacias = "backend\\farmacia\\RegistroFarmacias.txt";
+    public static final String nomeArquivoFarmacias = "src\\main\\java\\backend\\farmacia\\RegistroFarmacias.txt";
     
     private String cnpj;
     private Endereco endereco;
@@ -151,7 +151,7 @@ public class PessoaJuridica extends Pessoa{
     }
 
     public String getNomeArquivoEstoque(){
-        String nomeArquivoEstoque = "backend\\farmacia\\estoquesFarmacias\\" + "Estoque" + this.getCnpj() + ".txt";
+        String nomeArquivoEstoque = "src\\main\\java\\backend\\farmacia\\estoquesFarmacias\\" + "Estoque" + this.getCnpj() + ".txt";
         return nomeArquivoEstoque;
     }
 

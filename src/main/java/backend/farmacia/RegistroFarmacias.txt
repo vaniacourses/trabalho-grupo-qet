@@ -6,3 +6,6 @@ Pacheco,12345678,@gmail,senhaLixo,cnpj,Rua 10/numero/complemento/null/null/null/
 Pacheco,12345678,pacheco@gmail.com,123,123456,Rua azul/12/casa 3/null/null/null/null/null,null,null
 pacheco 2,12349999,@gmail,senhaLixo,cnpj,rua 20/numero/complemento/null/null/null/null/null,null,null
 drigaria,234566789,@gmail,senhaLixo,cnpj,rua 10/numero/complemento/null/null/null/null/null,null,null
+1,1,1,1,1,1/1/1/null/null/null/null/null,null,null
+1,1,1,1,1,1/1/1/null/null/null/null/null,null,null
+1,1,@gmail,senhaLixo,cnpj,1/numero/complemento/null/null/null/null/null,null,null
