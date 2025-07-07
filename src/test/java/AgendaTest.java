@@ -4,6 +4,7 @@ import backend.Endereco;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 public class AgendaTest {
 
@@ -13,8 +14,12 @@ public class AgendaTest {
     @BeforeEach
     void setUp() {
         agenda = new Agenda();
-        Endereco endereco = new Endereco("Rua A", "123", "Ap 2", "Centro", "São Paulo", "SP", "Brasil", "01000-000");
-        contato = new PessoaFisica("João", "1234", "joao@email.com", "123.456.789-00", "senha123", endereco);
+        Endereco endereco = new Endereco(
+            "Rua A", "123", "Ap 2", "Centro", "São Paulo", "SP", "Brasil", "01000-000"
+        );
+        contato = new PessoaFisica(
+            "João", "1234", "joao@email.com", "123.456.789-00", "senha123", endereco
+        );
     }
 
     @Test
@@ -26,8 +31,25 @@ public class AgendaTest {
 
     @Test
     void testAdicionarContatoNulo() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> agenda.adicionarContato(null));
+        Exception exception = assertThrows(
+            IllegalArgumentException.class,
+            () -> agenda.adicionarContato(null)
+        );
         assertEquals("É necessário informar um contato válido", exception.getMessage());
+    }
+
+    @Test
+    void testAdicionarDoisContatos() {
+        PessoaFisica pessoa1 = mock(PessoaFisica.class);
+        when(pessoa1.getNome()).thenReturn("Maria");
+
+        PessoaFisica pessoa2 = mock(PessoaFisica.class);
+        when(pessoa2.getNome()).thenReturn("João");
+
+        agenda.adicionarContato(pessoa1);
+        agenda.adicionarContato(pessoa2);
+
+        assertEquals(2, agenda.getContatos().size());
     }
 
     @Test
@@ -44,7 +66,7 @@ public class AgendaTest {
         assertFalse(resultado);
     }
 
-     @Test
+    @Test
     void testAlterarEmail() {
         agenda.adicionarContato(contato);
         boolean resultado = agenda.alterarEmailContato("João", "novo@email.com");
@@ -62,6 +84,12 @@ public class AgendaTest {
     }
 
     @Test
+    void testAlterarParticularidadeContatoInexistente() {
+        boolean resultado = agenda.alterarParticularidadeContato("Carlos", new Endereco("Rua X", "10"));
+        assertFalse(resultado);
+    }
+
+    @Test
     void testRemoverContatoExistente() {
         agenda.adicionarContato(contato);
         boolean resultado = agenda.removerContato("João");
@@ -70,9 +98,9 @@ public class AgendaTest {
     }
 
     @Test
-    void testRemoverContatoInexistente() {
-        boolean resultado = agenda.removerContato("Carlos");
-        assertFalse(resultado);
+    void testRemoverContatoNaoExistente() {
+        boolean result = agenda.removerContato("Inexistente");
+        assertFalse(result);
     }
 
     @Test
@@ -85,4 +113,5 @@ public class AgendaTest {
     void testToStringVazio() {
         assertEquals("null", agenda.toString());
     }
+
 }
