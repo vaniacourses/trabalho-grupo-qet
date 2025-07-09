@@ -1,3 +1,4 @@
+import java.nio.file.Path;
 import java.util.concurrent.TimeUnit;
 
 import org.assertj.swing.core.BasicRobot;
@@ -7,16 +8,24 @@ import org.assertj.swing.fixture.FrameFixture;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 
 import inicio.MedAlerta;
+import utils.AmbienteTemporario;
 
 class CadastroAutomatizadoIT {
+
+    @TempDir
+    Path tempDir;
 
     private FrameFixture iniciowindow;
     private Robot robot;
 
     @BeforeEach
     void setUp() {
+
+        AmbienteTemporario.iniciar(tempDir);
+
         Thread thread = new Thread(() -> MedAlerta.main(null));
         thread.setDaemon(true); // Permite que o teste termine mesmo se a thread do app ficar presa
         thread.start();
@@ -31,7 +40,8 @@ class CadastroAutomatizadoIT {
     }
     
     @AfterEach
-    void close() {
+    void cleanUp() {
+        AmbienteTemporario.terminar();
         iniciowindow.cleanUp();
     }
 

@@ -4,7 +4,7 @@ import backend.Endereco;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class AlteracaoIntegrationTest {
+public class AlteracaoIT {
 
     @Test
     void testAlterarTelefonePessoaFisicaNaAgenda() {
