@@ -54,7 +54,6 @@ public class EstoqueFarmacia extends javax.swing.JFrame {
         cancelar = new javax.swing.JButton();
         excluir = new javax.swing.JButton();
 
-        // Agrupando todos os setName dos campos preenchíveis
         voltar.setName("voltar");
         jButton1.setName("jButton1");
         nomeRemedio.setName("nomeRemedio");
@@ -64,7 +63,6 @@ public class EstoqueFarmacia extends javax.swing.JFrame {
         salvar.setName("salvar");
         cancelar.setName("cancelar");
         excluir.setName("excluir");
-        // Agrupando setName dos campos não preenchíveis
         jLabel1.setName("jLabel1");
         jLabel2.setName("jLabel2");
         jLabel3.setName("jLabel3");

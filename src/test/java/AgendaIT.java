@@ -3,7 +3,6 @@ import backend.usuario.Medico;
 import backend.usuario.PessoaFisica;
 import utils.AmbienteTemporario;
 import utils.UsuariosBuilder;
-import backend.Endereco;
 import backend.FuncoesArquivos;
 import backend.farmacia.PessoaJuridica;
 
@@ -12,8 +11,6 @@ import org.junit.jupiter.api.io.TempDir;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 

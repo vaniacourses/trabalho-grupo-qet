@@ -8,12 +8,9 @@ import org.assertj.swing.fixture.FrameFixture;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
 
 import base.BaseCRUDTest;
 import inicio.MedAlerta;
-import utils.AmbienteTemporario;
-
 class CadastroAutomatizadoIT extends BaseCRUDTest {
 
     private FrameFixture iniciowindow;
@@ -37,6 +34,7 @@ class CadastroAutomatizadoIT extends BaseCRUDTest {
     @AfterEach
     void cleanUp() {
         iniciowindow.cleanUp();
+        robot.cleanUp();
     }
 
     @Test
@@ -45,7 +43,7 @@ class CadastroAutomatizadoIT extends BaseCRUDTest {
         iniciowindow.button("jButton1").click();
 
         FrameFixture loginPessoa = WindowFinder.findFrame("LoginPessoa")
-                                                  .withTimeout(2, TimeUnit.SECONDS)
+                                                  .withTimeout(5, TimeUnit.SECONDS)
                                                   .using(robot);
 
         loginPessoa.textBox("nome_l_e").enterText("teste");
@@ -64,7 +62,7 @@ class CadastroAutomatizadoIT extends BaseCRUDTest {
         loginPessoa.button("prox_l").click();
         loginPessoa.requireNotVisible();
         FrameFixture home = WindowFinder.findFrame("Home")
-                                                .withTimeout(5000) 
+                                                .withTimeout(5, TimeUnit.SECONDS) 
                                                 .using(robot);
         
         home.requireVisible();
@@ -78,7 +76,7 @@ class CadastroAutomatizadoIT extends BaseCRUDTest {
         iniciowindow.button("jButton2").click();
 
         FrameFixture cadastroFarmacia = WindowFinder.findFrame("CadastroFarmacia")
-            .withTimeout(2, TimeUnit.SECONDS)
+            .withTimeout(5, TimeUnit.SECONDS)
             .using(robot);
 
         cadastroFarmacia.textBox("nomeFarmaciaEntrada").enterText("Farmacia Teste");

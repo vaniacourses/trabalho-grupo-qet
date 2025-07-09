@@ -65,7 +65,6 @@ public class ListaRemedios extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         duracaoRemedio = new javax.swing.JTextField();
 
-        // Agrupando todos os setName dos campos preenchíveis
         nomeRemedio.setName("nomeRemedio");
         quantidadeRemedio.setName("quantidadeRemedio");
         doseRemedio.setName("doseRemedio");
@@ -75,7 +74,6 @@ public class ListaRemedios extends javax.swing.JFrame {
         salvar.setName("salvar");
         cancelar.setName("cancelar");
         excluir.setName("excluir");
-        // Agrupando setName dos campos não preenchíveis
         jLabel1.setName("jLabel1");
         jLabel2.setName("jLabel2");
         jLabel3.setName("jLabel3");

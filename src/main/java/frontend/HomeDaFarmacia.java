@@ -43,9 +43,7 @@ public class HomeDaFarmacia extends javax.swing.JFrame {
         enderecoFarmaciaH = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
-        // Agrupando todos os setName dos campos preenchíveis
         jButton1.setName("jButton1");
-        // Agrupando setName dos campos não preenchíveis
         jPanel5.setName("jPanel5");
         jLabel2.setName("jLabel2");
         nomeFarmaciaH.setName("nomeFarmaciaH");

@@ -39,11 +39,9 @@ public class EntrarFarmacia extends javax.swing.JFrame {
         senhaEntradaE = new javax.swing.JPasswordField();
         prox_l = new javax.swing.JButton();
 
-        // Agrupando todos os setName dos campos preenchíveis
         emailEntradaE.setName("emailEntradaE");
         senhaEntradaE.setName("senhaEntradaE");
         prox_l.setName("prox_l");
-        // Agrupando setName dos campos não preenchíveis
         jLabel1.setName("jLabel1");
         emailEntrada.setName("emailEntrada");
         senhaL.setName("senhaL");

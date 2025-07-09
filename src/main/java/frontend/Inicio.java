@@ -44,7 +44,6 @@ public class Inicio extends javax.swing.JFrame implements Runnable {
         jButton2.setName("jButton2");
         jButton3.setName("jButton3");
         jButton4.setName("jButton4");
-        // Agrupando setName dos campos não preenchíveis
         jSeparator1.setName("jSeparator1");
         jSeparator2.setName("jSeparator2");
         jSeparator3.setName("jSeparator3");

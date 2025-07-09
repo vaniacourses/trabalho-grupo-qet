@@ -14,12 +14,12 @@ public abstract class BaseCRUDTest {
     Path tempDir;
 
     @BeforeEach
-    private void setUp() {
+    private void iniciar() {
         AmbienteTemporario.iniciar(tempDir);
     }
 
     @AfterEach
-    private void cleanUp() {
+    private void terminar() {
         AmbienteTemporario.terminar();
     }
     

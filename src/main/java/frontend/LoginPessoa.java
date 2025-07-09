@@ -61,7 +61,6 @@ public class LoginPessoa extends javax.swing.JFrame {
         complementoL.setName("complementoL");
         telefoneL.setName("telefoneL");
         prox_l.setName("prox_l");
-        // Agrupando setName dos campos não preenchíveis
         naoMexerNisso.setName("naoMexerNisso");
         nome_l.setName("nome_l");
         idade_l.setName("idade_l");

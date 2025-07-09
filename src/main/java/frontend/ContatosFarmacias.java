@@ -41,7 +41,6 @@ public class ContatosFarmacias extends javax.swing.JFrame {
         tabelaFarmacia = new javax.swing.JTable();
         cancelar = new javax.swing.JButton();
 
-        // Agrupando todos os setName dos campos preenchíveis
         voltar.setName("voltar");
         novaFarmacia.setName("novaFarmacia");
         excluirFarmacia.setName("excluirFarmacia");
@@ -50,7 +49,6 @@ public class ContatosFarmacias extends javax.swing.JFrame {
         enderecoFarmacia.setName("enderecoFarmacia");
         salvarFarmacia.setName("salvarFarmacia");
         cancelar.setName("cancelar");
-        // Agrupando setName dos campos não preenchíveis
         jLabel1.setName("jLabel1");
         jLabel2.setName("jLabel2");
         jLabel3.setName("jLabel3");

@@ -38,7 +38,6 @@ public class ContatosMedicos extends javax.swing.JFrame {
         especialidade = new javax.swing.JLabel();
         especialidadeMedico = new javax.swing.JTextField();
 
-        // Agrupando todos os setName dos campos preenchíveis
         voltar.setName("voltar");
         novoContato.setName("novoContato");
         excluirContato.setName("excluirContato");
@@ -47,7 +46,6 @@ public class ContatosMedicos extends javax.swing.JFrame {
         salvarContato.setName("salvarContato");
         cancelar.setName("cancelar");
         especialidadeMedico.setName("especialidadeMedico");
-        // Agrupando setName dos campos não preenchíveis
         jLabel1.setName("jLabel1");
         jLabel2.setName("jLabel2");
         jScrollPane1.setName("jScrollPane1");

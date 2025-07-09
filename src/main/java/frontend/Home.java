@@ -46,11 +46,9 @@ public class Home extends javax.swing.JFrame {
         endereco_home = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
 
-        // Agrupando todos os setName dos campos preenchíveis
         jButton1.setName("jButton1");
         jButton2.setName("jButton2");
         jButton3.setName("jButton3");
-        // Agrupando setName dos campos não preenchíveis
         naoMexerNissoHome.setName("naoMexerNissoHome");
         nome_Home.setName("nome_Home");
         jPanel5.setName("jPanel5");

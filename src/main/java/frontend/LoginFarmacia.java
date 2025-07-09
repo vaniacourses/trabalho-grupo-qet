@@ -48,7 +48,6 @@ public class LoginFarmacia extends javax.swing.JFrame {
         numeroL = new javax.swing.JTextField();
         complementoLF = new javax.swing.JTextField();
 
-        // Agrupando todos os setName dos campos preenchíveis
         nomeFarmaciaEntrada.setName("nomeFarmaciaEntrada");
         cnpjFarmaciaEntrada.setName("cnpjFarmaciaEntrada");
         proximoFarmacia.setName("proximoFarmacia");
@@ -58,7 +57,6 @@ public class LoginFarmacia extends javax.swing.JFrame {
         ruaLF.setName("ruaLF");
         numeroL.setName("numeroL");
         complementoLF.setName("complementoLF");
-        // Agrupando setName dos campos não preenchíveis
         jPanel1.setName("jPanel1");
         nomeFarmacia.setName("nomeFarmacia");
         cnpjFarmacia.setName("cnpjFarmacia");
