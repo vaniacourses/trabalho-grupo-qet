@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Medico extends Pessoa {
-    public static final String nomeArquivoMedicos = "src\\main\\java\\backend\\usuario\\RegistroMedicos.txt";
+    public static String nomeArquivoMedicos = "src\\main\\java\\backend\\usuario\\RegistroMedicos.txt";
     private String especialidade;
 
     // construtor

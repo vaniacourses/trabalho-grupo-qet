@@ -17,7 +17,7 @@ import backend.farmacia.PessoaJuridica;
 
 public class PessoaFisica extends Pessoa {
 
-    public static final String nomeArquivoUsuarios = "src\\main\\java\\backend\\usuario\\RegistroUsuarios.txt";
+    public static String nomeArquivoUsuarios = "src\\main\\java\\backend\\usuario\\RegistroUsuarios.txt";
     
     private String cpf;
     private Endereco endereco;

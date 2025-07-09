@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import inicio.MedAlerta;
 
-class CadastroAutomatizadoTest {
+class CadastroAutomatizadoIT {
 
     private FrameFixture iniciowindow;
     private Robot robot;

@@ -17,7 +17,7 @@ import backend.Medicamento;
 
 public class PessoaJuridica extends Pessoa{
 
-    public static final String nomeArquivoFarmacias = "src\\main\\java\\backend\\farmacia\\RegistroFarmacias.txt";
+    public static String nomeArquivoFarmacias = "src\\main\\java\\backend\\farmacia\\RegistroFarmacias.txt";
     
     private String cnpj;
     private Endereco endereco;
