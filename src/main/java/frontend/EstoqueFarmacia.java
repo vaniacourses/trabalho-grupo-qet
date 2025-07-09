@@ -22,6 +22,7 @@ public class EstoqueFarmacia extends javax.swing.JFrame {
      * Creates new form Estoque
      */
     public EstoqueFarmacia() {
+        this.setName("EstoqueFarmacia");
     }
     public void receber(PessoaJuridica farmacia){
         this.farmacia = farmacia;
@@ -52,6 +53,24 @@ public class EstoqueFarmacia extends javax.swing.JFrame {
         salvar = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
         excluir = new javax.swing.JButton();
+
+        // Agrupando todos os setName dos campos preenchíveis
+        voltar.setName("voltar");
+        jButton1.setName("jButton1");
+        nomeRemedio.setName("nomeRemedio");
+        quantidadeRemedio.setName("quantidadeRemedio");
+        precoRemedio.setName("precoRemedio");
+        especificacoesRemedio.setName("especificacoesRemedio");
+        salvar.setName("salvar");
+        cancelar.setName("cancelar");
+        excluir.setName("excluir");
+        // Agrupando setName dos campos não preenchíveis
+        jLabel1.setName("jLabel1");
+        jLabel2.setName("jLabel2");
+        jLabel3.setName("jLabel3");
+        jLabel4.setName("jLabel4");
+        jScrollPane2.setName("jScrollPane2");
+        tabelaRemedio.setName("tabelaRemedio");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 

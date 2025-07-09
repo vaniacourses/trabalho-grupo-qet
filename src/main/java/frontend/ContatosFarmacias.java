@@ -12,6 +12,7 @@ public class ContatosFarmacias extends javax.swing.JFrame {
      * Creates new form Contatosemergencia
      */
     public ContatosFarmacias() {
+        this.setName("ContatosFarmacias");
     }
     public void receber(PessoaFisica pessoa){
         this.pessoa = pessoa;
@@ -39,6 +40,22 @@ public class ContatosFarmacias extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaFarmacia = new javax.swing.JTable();
         cancelar = new javax.swing.JButton();
+
+        // Agrupando todos os setName dos campos preenchíveis
+        voltar.setName("voltar");
+        novaFarmacia.setName("novaFarmacia");
+        excluirFarmacia.setName("excluirFarmacia");
+        nomeFarmacia.setName("nomeFarmacia");
+        numeroFarmacia.setName("numeroFarmacia");
+        enderecoFarmacia.setName("enderecoFarmacia");
+        salvarFarmacia.setName("salvarFarmacia");
+        cancelar.setName("cancelar");
+        // Agrupando setName dos campos não preenchíveis
+        jLabel1.setName("jLabel1");
+        jLabel2.setName("jLabel2");
+        jLabel3.setName("jLabel3");
+        jScrollPane1.setName("jScrollPane1");
+        tabelaFarmacia.setName("tabelaFarmacia");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 

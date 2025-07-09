@@ -15,10 +15,12 @@ public class Home extends javax.swing.JFrame {
     PessoaFisica pessoa;
  
     public Home() {
+        this.setName("Home");
     }
 
     public void receber(PessoaFisica pessoa){
         this.pessoa = pessoa;
+        this.setName("Home");
         initComponents();
     }
 
@@ -43,6 +45,21 @@ public class Home extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         endereco_home = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+
+        // Agrupando todos os setName dos campos preenchíveis
+        jButton1.setName("jButton1");
+        jButton2.setName("jButton2");
+        jButton3.setName("jButton3");
+        // Agrupando setName dos campos não preenchíveis
+        naoMexerNissoHome.setName("naoMexerNissoHome");
+        nome_Home.setName("nome_Home");
+        jPanel5.setName("jPanel5");
+        jLabel2.setName("jLabel2");
+        nome_home1.setName("nome_home1");
+        jLabel1.setName("jLabel1");
+        idade_home.setName("idade_home");
+        jLabel3.setName("jLabel3");
+        endereco_home.setName("endereco_home");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 

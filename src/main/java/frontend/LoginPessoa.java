@@ -19,6 +19,7 @@ public class LoginPessoa extends javax.swing.JFrame {
      * Creates new form login
      */
     public LoginPessoa() {
+        this.setName("LoginPessoa");
         initComponents();
     }
 
@@ -50,6 +51,27 @@ public class LoginPessoa extends javax.swing.JFrame {
         complementoL = new javax.swing.JTextField();
         telefoneL = new javax.swing.JTextField();
         telefone = new javax.swing.JLabel();
+
+        nome_l_e.setName("nome_l_e");
+        idade_l_e.setName("idade_l_e");
+        emailLPE.setName("emailLPE");
+        senhaLPE.setName("senhaLPE");
+        ruaL.setName("ruaL");
+        numeroL.setName("numeroL");
+        complementoL.setName("complementoL");
+        telefoneL.setName("telefoneL");
+        prox_l.setName("prox_l");
+        // Agrupando setName dos campos não preenchíveis
+        naoMexerNisso.setName("naoMexerNisso");
+        nome_l.setName("nome_l");
+        idade_l.setName("idade_l");
+        emailL.setName("emailL");
+        senhaL.setName("senhaL");
+        jPanel1.setName("jPanel1");
+        complemento.setName("complemento");
+        numero.setName("numero");
+        rua.setName("rua");
+        telefone.setName("telefone");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 

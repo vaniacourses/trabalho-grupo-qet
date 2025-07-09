@@ -1,8 +1,6 @@
 import backend.gerenciamento.Data;
 import backend.usuario.Uso;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
@@ -13,19 +11,19 @@ import java.util.Calendar;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-public class DataTest {
+class DataTest {
 
     private Calendar mockedCalendar;
 
     @BeforeEach
-    public void setup() {
+    void setup() {
         mockedCalendar = mock(Calendar.class);
-        when(mockedCalendar.get(Calendar.DAY_OF_WEEK)).thenReturn(2);
-        when(mockedCalendar.get(Calendar.HOUR_OF_DAY)).thenReturn(10);
+        when(mockedCalendar.get(Calendar.DAY_OF_WEEK)).thenReturn(2); // segunda-feira
+        when(mockedCalendar.get(Calendar.HOUR_OF_DAY)).thenReturn(10); // 10 horas
     }
 
     @Test
-    public void testFormatarDia() {
+    void testFormatarDia() {
         assertEquals(2, Data.formatarDia("seg"));
         assertEquals(3, Data.formatarDia("ter"));
         assertEquals(4, Data.formatarDia("qua"));
@@ -36,7 +34,7 @@ public class DataTest {
     }
 
     @Test
-    public void testFormatarDiaInvalido(){
+    void testFormatarDiaInvalido(){
         assertEquals(1, Data.formatarDia("fwefwafwefe"));
         assertEquals(1, Data.formatarDia(""));
         assertEquals(1, Data.formatarDia("1"));
@@ -45,8 +43,8 @@ public class DataTest {
     
     
     @Test
-    public void testVerificarDia() {
-        // Simula que hoje é segunda-feira (Calendar.DAY_OF_WEEK = 2)
+    void testVerificarDia() {
+
         try (MockedStatic<Calendar> mocked = mockStatic(Calendar.class)) {
             mocked.when(Calendar::getInstance).thenReturn(mockedCalendar);
 
@@ -92,21 +90,21 @@ public class DataTest {
     }
 
     @Test
-    public void testVerificarHora(){
+    void testVerificarHora(){
         try (MockedStatic<Calendar> mocked = mockStatic(Calendar.class)) {
             mocked.when(Calendar::getInstance).thenReturn(mockedCalendar);
 
             assertTrue(Data.verificarHora(10));
             assertFalse(Data.verificarHora(11));
+
             when(mockedCalendar.get(Calendar.HOUR_OF_DAY)).thenReturn(0);
 
-            // Não entendi o uso do ultimaVerficacaoHorario mas quando a hora é 0 verificação hora SEMPRE é false
             assertFalse(Data.verificarHora(0));
         }
     }
 
     @Test
-    public void testVerificarHoraInvalida() {
+    void testVerificarHoraInvalida() {
         try (MockedStatic<Calendar> mocked = mockStatic(Calendar.class)) {
             mocked.when(Calendar::getInstance).thenReturn(mockedCalendar);
 
@@ -119,7 +117,7 @@ public class DataTest {
     }
 
     @Test
-    public void testEhMeiaNoite() {
+    void testEhMeiaNoite() {
 
         try (MockedStatic<Calendar> mocked = mockStatic(Calendar.class)) {
             mocked.when(Calendar::getInstance).thenReturn(mockedCalendar);
@@ -131,7 +129,7 @@ public class DataTest {
     }
 
     @Test
-    public void testHoraDoRemedio() {
+    void testHoraDoRemedio() {
         try (MockedStatic<Calendar> mocked = mockStatic(Calendar.class)) {
             mocked.when(Calendar::getInstance).thenReturn(mockedCalendar);
 
@@ -153,7 +151,7 @@ public class DataTest {
     }
 
     @Test
-    public void testHoraDoRemedioInvalida() {
+    void testHoraDoRemedioInvalida() {
         try (MockedStatic<Calendar> mocked = mockStatic(Calendar.class)) {
             mocked.when(Calendar::getInstance).thenReturn(mockedCalendar);
 

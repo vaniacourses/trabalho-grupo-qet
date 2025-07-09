@@ -15,6 +15,7 @@ public class Inicio extends javax.swing.JFrame implements Runnable {
      * Creates new form Inicio
      */
     public Inicio() {
+        this.setName("Inicio");
         initComponents();
     }
 
@@ -38,6 +39,19 @@ public class Inicio extends javax.swing.JFrame implements Runnable {
         jButton4 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+
+        jButton1.setName("jButton1");
+        jButton2.setName("jButton2");
+        jButton3.setName("jButton3");
+        jButton4.setName("jButton4");
+        // Agrupando setName dos campos não preenchíveis
+        jSeparator1.setName("jSeparator1");
+        jSeparator2.setName("jSeparator2");
+        jSeparator3.setName("jSeparator3");
+        jLabel1.setName("jLabel1");
+        jLabel2.setName("jLabel2");
+        jLabel3.setName("jLabel3");
+        jLabel4.setName("jLabel4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 

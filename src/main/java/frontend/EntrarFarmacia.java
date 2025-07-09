@@ -19,6 +19,7 @@ public class EntrarFarmacia extends javax.swing.JFrame {
      * Creates new form EntrarFarmacia
      */
     public EntrarFarmacia() {
+        this.setName("EntrarFarmacia");
         initComponents();
     }
 
@@ -37,6 +38,15 @@ public class EntrarFarmacia extends javax.swing.JFrame {
         senhaL = new javax.swing.JLabel();
         senhaEntradaE = new javax.swing.JPasswordField();
         prox_l = new javax.swing.JButton();
+
+        // Agrupando todos os setName dos campos preenchíveis
+        emailEntradaE.setName("emailEntradaE");
+        senhaEntradaE.setName("senhaEntradaE");
+        prox_l.setName("prox_l");
+        // Agrupando setName dos campos não preenchíveis
+        jLabel1.setName("jLabel1");
+        emailEntrada.setName("emailEntrada");
+        senhaL.setName("senhaL");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 

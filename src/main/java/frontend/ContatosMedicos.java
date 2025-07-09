@@ -14,6 +14,7 @@ public class ContatosMedicos extends javax.swing.JFrame {
     PessoaFisica pessoa;
  
     public ContatosMedicos() {
+        this.setName("ContatosMedicos");
     }
     public void receber(PessoaFisica pessoa){
         this.pessoa = pessoa;
@@ -36,6 +37,22 @@ public class ContatosMedicos extends javax.swing.JFrame {
         cancelar = new javax.swing.JButton();
         especialidade = new javax.swing.JLabel();
         especialidadeMedico = new javax.swing.JTextField();
+
+        // Agrupando todos os setName dos campos preenchíveis
+        voltar.setName("voltar");
+        novoContato.setName("novoContato");
+        excluirContato.setName("excluirContato");
+        nomeMedico.setName("nomeMedico");
+        numeroMedico.setName("numeroMedico");
+        salvarContato.setName("salvarContato");
+        cancelar.setName("cancelar");
+        especialidadeMedico.setName("especialidadeMedico");
+        // Agrupando setName dos campos não preenchíveis
+        jLabel1.setName("jLabel1");
+        jLabel2.setName("jLabel2");
+        jScrollPane1.setName("jScrollPane1");
+        tabelaContato.setName("tabelaContato");
+        especialidade.setName("especialidade");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 

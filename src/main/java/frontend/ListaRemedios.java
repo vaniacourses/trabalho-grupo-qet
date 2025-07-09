@@ -20,7 +20,9 @@ public class ListaRemedios extends javax.swing.JFrame {
     /**
      * Creates new form listaremedio
      */
-    public ListaRemedios() {}
+    public ListaRemedios() {
+        this.setName("ListaRemedios");
+    }
     
     public void receber(PessoaFisica pessoa){
         this.pessoa = pessoa;
@@ -62,6 +64,35 @@ public class ListaRemedios extends javax.swing.JFrame {
         doseRemedio = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         duracaoRemedio = new javax.swing.JTextField();
+
+        // Agrupando todos os setName dos campos preenchíveis
+        nomeRemedio.setName("nomeRemedio");
+        quantidadeRemedio.setName("quantidadeRemedio");
+        doseRemedio.setName("doseRemedio");
+        duracaoRemedio.setName("duracaoRemedio");
+        voltar.setName("voltar");
+        novoRemedio.setName("novoRemedio");
+        salvar.setName("salvar");
+        cancelar.setName("cancelar");
+        excluir.setName("excluir");
+        // Agrupando setName dos campos não preenchíveis
+        jLabel1.setName("jLabel1");
+        jLabel2.setName("jLabel2");
+        jLabel3.setName("jLabel3");
+        jLabel4.setName("jLabel4");
+        jLabel5.setName("jLabel5");
+        jLabel6.setName("jLabel6");
+        horaRemedio.setName("horaRemedio");
+        segunda.setName("segunda");
+        terca.setName("terca");
+        quarta.setName("quarta");
+        quinta.setName("quinta");
+        sexta.setName("sexta");
+        sabado.setName("sabado");
+        domingo.setName("domingo");
+        jScrollPane2.setName("jScrollPane2");
+        tabelaRemedio.setName("tabelaRemedio");
+        intervaloRemedio.setName("intervaloRemedio");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));

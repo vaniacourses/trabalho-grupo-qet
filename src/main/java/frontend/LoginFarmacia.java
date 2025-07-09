@@ -15,6 +15,7 @@ public class LoginFarmacia extends javax.swing.JFrame {
      * Creates new form LoguinFarmacia
      */
     public LoginFarmacia() {
+        this.setName("CadastroFarmacia");
         initComponents();
     }
 
@@ -46,6 +47,28 @@ public class LoginFarmacia extends javax.swing.JFrame {
         ruaLF = new javax.swing.JTextField();
         numeroL = new javax.swing.JTextField();
         complementoLF = new javax.swing.JTextField();
+
+        // Agrupando todos os setName dos campos preenchíveis
+        nomeFarmaciaEntrada.setName("nomeFarmaciaEntrada");
+        cnpjFarmaciaEntrada.setName("cnpjFarmaciaEntrada");
+        proximoFarmacia.setName("proximoFarmacia");
+        senhaLFE.setName("senhaLFE");
+        emailLFE.setName("emailLFE");
+        numeroDaFarmaciaEntrada.setName("numeroDaFarmaciaEntrada");
+        ruaLF.setName("ruaLF");
+        numeroL.setName("numeroL");
+        complementoLF.setName("complementoLF");
+        // Agrupando setName dos campos não preenchíveis
+        jPanel1.setName("jPanel1");
+        nomeFarmacia.setName("nomeFarmacia");
+        cnpjFarmacia.setName("cnpjFarmacia");
+        emailLF.setName("emailLF");
+        senhaLF.setName("senhaLF");
+        telefoneFarmacia.setName("telefoneFarmacia");
+        jPanel2.setName("jPanel2");
+        complemento.setName("complemento");
+        numero.setName("numero");
+        rua.setName("rua");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 

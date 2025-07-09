@@ -18,6 +18,7 @@ public class HomeDaFarmacia extends javax.swing.JFrame {
      * Creates new form Homefarmacia
      */
     public HomeDaFarmacia() {
+        this.setName("HomeDaFarmacia");
     }
     
     public void receber(PessoaJuridica farmacia){
@@ -41,6 +42,17 @@ public class HomeDaFarmacia extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         enderecoFarmaciaH = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+
+        // Agrupando todos os setName dos campos preenchíveis
+        jButton1.setName("jButton1");
+        // Agrupando setName dos campos não preenchíveis
+        jPanel5.setName("jPanel5");
+        jLabel2.setName("jLabel2");
+        nomeFarmaciaH.setName("nomeFarmaciaH");
+        jLabel1.setName("jLabel1");
+        cnpjFarmaciaH.setName("cnpjFarmaciaH");
+        jLabel3.setName("jLabel3");
+        enderecoFarmaciaH.setName("enderecoFarmaciaH");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
