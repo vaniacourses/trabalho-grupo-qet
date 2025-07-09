@@ -4,6 +4,7 @@ import backend.usuario.PessoaFisica;
 import utils.AmbienteTemporario;
 import utils.UsuariosBuilder;
 import backend.Endereco;
+import backend.FuncoesArquivos;
 import backend.farmacia.PessoaJuridica;
 
 import org.junit.jupiter.api.Test;
@@ -14,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.List;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -31,8 +33,6 @@ class AgendaIT {
     void setup() {
 
         AmbienteTemporario.iniciar(tempDir);
-
-        System.out.println("MEGATESTE222222222");
 
         agenda = new Agenda();
     }
@@ -119,5 +119,31 @@ class AgendaIT {
 
         assertTrue(resultado);
         assertEquals("9999-9999", pessoa.getTelefone());
+    }
+
+    @Test
+    void testRemoverContatoEPersistirAgenda() {
+
+        PessoaFisica pessoa = UsuariosBuilder.criarPessoaFisica();
+
+        agenda = new Agenda();
+        agenda.adicionarContato(pessoa);
+
+        // Remove contato
+        boolean removido = agenda.removerContato("João");
+
+        assertTrue(removido);
+        assertEquals(0, agenda.getContatos().size());
+
+        // Salva agenda no arquivo
+        String dados = agenda.toString();
+        String arquivo = "agendaRemocao.txt";
+
+        FuncoesArquivos.escreverArquivo(arquivo, dados);
+
+        List<String> linhas = FuncoesArquivos.obterListaLinhas(arquivo);
+        String resultado = String.join("", linhas);
+
+        assertEquals("null", resultado);
     }
 }
