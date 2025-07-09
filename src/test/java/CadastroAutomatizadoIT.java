@@ -10,22 +10,17 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
+import base.BaseCRUDTest;
 import inicio.MedAlerta;
 import utils.AmbienteTemporario;
 
-class CadastroAutomatizadoIT {
-
-    @TempDir
-    Path tempDir;
+class CadastroAutomatizadoIT extends BaseCRUDTest {
 
     private FrameFixture iniciowindow;
     private Robot robot;
 
     @BeforeEach
     void setUp() {
-
-        AmbienteTemporario.iniciar(tempDir);
-
         Thread thread = new Thread(() -> MedAlerta.main(null));
         thread.setDaemon(true); // Permite que o teste termine mesmo se a thread do app ficar presa
         thread.start();
@@ -41,7 +36,6 @@ class CadastroAutomatizadoIT {
     
     @AfterEach
     void cleanUp() {
-        AmbienteTemporario.terminar();
         iniciowindow.cleanUp();
     }
 

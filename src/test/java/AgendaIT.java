@@ -32,6 +32,8 @@ class AgendaIT {
 
         AmbienteTemporario.iniciar(tempDir);
 
+        System.out.println("MEGATESTE222222222");
+
         agenda = new Agenda();
     }
 
@@ -103,5 +105,19 @@ class AgendaIT {
         assertEquals(1, agenda.getContatos().size());
         assertEquals("MedicoTeste", agenda.getContatos().get(0).getNome());
         assertEquals("medico@email.com", agenda.getContatos().get(0).getEmail());
+    }
+
+    @Test
+    void testAlterarTelefonePessoaFisicaNaAgenda() {
+
+        PessoaFisica pessoa = UsuariosBuilder.criarPessoaFisica();
+
+        Agenda agenda = new Agenda();
+        agenda.adicionarContato(pessoa);
+
+        boolean resultado = agenda.alterarTelContato("João", "9999-9999");
+
+        assertTrue(resultado);
+        assertEquals("9999-9999", pessoa.getTelefone());
     }
 }
