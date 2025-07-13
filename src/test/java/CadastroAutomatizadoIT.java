@@ -1,46 +1,16 @@
-import java.nio.file.Path;
 import java.util.concurrent.TimeUnit;
 
-import org.assertj.swing.core.BasicRobot;
-import org.assertj.swing.core.Robot;
 import org.assertj.swing.finder.WindowFinder;
 import org.assertj.swing.fixture.FrameFixture;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import base.BaseCRUDTest;
-import inicio.MedAlerta;
-class CadastroAutomatizadoIT extends BaseCRUDTest {
-
-    private FrameFixture iniciowindow;
-    private Robot robot;
-
-    @BeforeEach
-    void setUp() {
-        Thread thread = new Thread(() -> MedAlerta.main(null));
-        thread.setDaemon(true); // Permite que o teste termine mesmo se a thread do app ficar presa
-        thread.start();
-
-        robot = BasicRobot.robotWithCurrentAwtHierarchy();
-        robot.settings().delayBetweenEvents(50);
-
-      
-        iniciowindow = WindowFinder.findFrame("Inicio")
-                             .withTimeout(5, TimeUnit.SECONDS)
-                             .using(robot);
-    }
-    
-    @AfterEach
-    void cleanUp() {
-        iniciowindow.cleanUp();
-        robot.cleanUp();
-    }
+import base.BaseAutomatizationTest;
+class CadastroAutomatizadoIT extends BaseAutomatizationTest {
 
     @Test
     void testCadastroPessoa() {
 
-        iniciowindow.button("jButton1").click();
+        inicioWindow.button("jButton1").click();
 
         FrameFixture loginPessoa = WindowFinder.findFrame("LoginPessoa")
                                                   .withTimeout(5, TimeUnit.SECONDS)
@@ -73,7 +43,7 @@ class CadastroAutomatizadoIT extends BaseCRUDTest {
     @Test
     void testCadastroFarmacia() {
 
-        iniciowindow.button("jButton2").click();
+        inicioWindow.button("jButton2").click();
 
         FrameFixture cadastroFarmacia = WindowFinder.findFrame("CadastroFarmacia")
             .withTimeout(5, TimeUnit.SECONDS)

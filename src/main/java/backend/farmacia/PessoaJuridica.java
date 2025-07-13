@@ -18,11 +18,15 @@ import backend.Medicamento;
 public class PessoaJuridica extends Pessoa{
 
     public static String nomeArquivoFarmacias = "src\\main\\java\\backend\\farmacia\\RegistroFarmacias.txt";
+
+    public static String basePathEstoque = "src\\main\\java\\backend\\farmacia\\estoquesFarmacias\\";
     
     private String cnpj;
     private Endereco endereco;
     private Estoque estoque;
     private Agenda contatosClientes;
+    private String nomeArquivoEstoque = basePathEstoque + "Estoque" + this.getCnpj() + ".txt";
+
 
     public PessoaJuridica(String nome, String telefone, String email, String senha, String cnpj, Endereco endereco){
         super(nome, telefone, email, senha);
@@ -151,7 +155,6 @@ public class PessoaJuridica extends Pessoa{
     }
 
     public String getNomeArquivoEstoque(){
-        String nomeArquivoEstoque = "src\\main\\java\\backend\\farmacia\\estoquesFarmacias\\" + "Estoque" + this.getCnpj() + ".txt";
         return nomeArquivoEstoque;
     }
 
