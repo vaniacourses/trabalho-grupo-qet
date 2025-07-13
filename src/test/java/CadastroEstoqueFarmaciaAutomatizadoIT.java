@@ -11,7 +11,7 @@ import frontend.EstoqueFarmacia;
 import frontend.HomeDaFarmacia;
 import utils.UsuariosBuilder;
 
-public class CadastroEstoqueFarmaciaIT extends BaseAutomatizationTest {
+public class CadastroEstoqueFarmaciaAutomatizadoIT extends BaseAutomatizationTest {
 
     @Test
     void testCadastroEstoqueFarmacia() throws InterruptedException {
