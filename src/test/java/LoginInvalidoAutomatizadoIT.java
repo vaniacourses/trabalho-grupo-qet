@@ -9,14 +9,14 @@ import backend.usuario.PessoaFisica;
 import base.BaseAutomatizationTest;
 import frontend.EntrarFarmacia;
 import frontend.EntrarPessoa;
-import utils.UsuariosBuilder;
+import utils.BuilderUtils;
 
 class LoginInvalidoAutomatizadoIT extends BaseAutomatizationTest {
 
     @Test
     void testLoginPessoaSenhaErrada() {
 
-        PessoaFisica pessoa = UsuariosBuilder.criarPessoaFisica();
+        PessoaFisica pessoa = BuilderUtils.criarPessoaFisica();
         inicioWindow.button("jButton3").click();
 
         FrameFixture entrarPessoa = findFrame(EntrarPessoa.class);
@@ -31,7 +31,7 @@ class LoginInvalidoAutomatizadoIT extends BaseAutomatizationTest {
     @Test
     void testLoginPessoaEmailErrado() {
 
-        PessoaFisica pessoa = UsuariosBuilder.criarPessoaFisica();
+        PessoaFisica pessoa = BuilderUtils.criarPessoaFisica();
         inicioWindow.button("jButton3").click();
 
         FrameFixture entrarPessoa = findFrame(EntrarPessoa.class);
@@ -45,7 +45,7 @@ class LoginInvalidoAutomatizadoIT extends BaseAutomatizationTest {
 
     @Test
     void testLoginFarmaciaSenhaErrada() {
-        PessoaJuridica farmacia = UsuariosBuilder.criarPessoaJuridica();
+        PessoaJuridica farmacia = BuilderUtils.criarPessoaJuridica();
         inicioWindow.button("jButton4").click();
 
         FrameFixture entrarFarmacia = findFrame(EntrarFarmacia.class);
@@ -58,7 +58,7 @@ class LoginInvalidoAutomatizadoIT extends BaseAutomatizationTest {
 
     @Test
     void testLoginFarmaciaEmailErrado() {
-        PessoaJuridica farmacia = UsuariosBuilder.criarPessoaJuridica();
+        PessoaJuridica farmacia = BuilderUtils.criarPessoaJuridica();
         inicioWindow.button("jButton4").click();
 
         FrameFixture entrarFarmacia = findFrame(EntrarFarmacia.class);

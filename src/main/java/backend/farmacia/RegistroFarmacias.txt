@@ -13,3 +13,4 @@ Farmacia 1,1111111,@gmail,senhaLixo,cnpj,Rua 1 número 1/numero/complemento/null
 Farmacia 1,1111111,@gmail,senhaLixo,cnpj,Rua 1 número 1/numero/complemento/null/null/null/null/null,null,null
 Farmacia Teste,11999998888,farmacia@teste.com,senhaForte123,12345678000199,Rua das Farmacias/456/Sala 2/null/null/null/null/null,null,null
 Farmacia Teste,11999998888,farmacia@teste.com,senhaForte123,12345678000199,Rua das Farmacias/456/Sala 2/null/null/null/null/null,null,null
+1, 1, 1, 1, 1, 1, null, null

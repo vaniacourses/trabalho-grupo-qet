@@ -1,5 +1,7 @@
 package utils;
 
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 
 
@@ -22,9 +24,14 @@ public class AmbienteTemporario {
 
         PessoaFisica.nomeArquivoUsuarios = tempDir.resolve("usuarios.txt").toString();
         PessoaJuridica.nomeArquivoFarmacias = tempDir.resolve("farmacias.txt").toString();
-        PessoaJuridica.basePathEstoque = tempDir.resolve("estoquesFarmacias\\").toString();
+        PessoaJuridica.basePathEstoque = tempDir.resolve("estoquesFarmacias").toString();
         Medico.nomeArquivoMedicos = tempDir.resolve("medicos.txt").toString();
 
+        try {
+            Files.createDirectories(tempDir.resolve("estoquesFarmacias"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void terminar(){

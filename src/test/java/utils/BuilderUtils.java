@@ -2,11 +2,12 @@ package utils;
 
 
 import backend.Endereco;
+import backend.Medicamento;
 import backend.farmacia.PessoaJuridica;
 import backend.usuario.Medico;
 import backend.usuario.PessoaFisica;
 
-public class UsuariosBuilder {
+public class BuilderUtils {
 
     public static PessoaFisica criarPessoaFisica() {
         Endereco enderecoPessoa = new Endereco(
@@ -25,10 +26,10 @@ public class UsuariosBuilder {
     public static PessoaJuridica criarPessoaJuridica(){
         Endereco enderecoFarm = new Endereco(
             "Av Central", "100", "Loja 1", "Centro",
-            "CidadeY", "UF", "Brasil", "11111-111"
+            "CidadeY", "UF", "Brasil", "11111111"
         );
         PessoaJuridica farmacia = new PessoaJuridica(
-            "FarmaciaTeste", "8888-8888", "farmacia@email.com", "senhaFarm", "12.345.678/0001-99", enderecoFarm
+            "FarmaciaTeste", "00000000", "farmacia@email.com", "senhaFarm", "2100", enderecoFarm
         );
         farmacia.salvarDadosArquivo();
         return farmacia;
@@ -36,9 +37,13 @@ public class UsuariosBuilder {
 
     public static Medico criarMedico() {
         Medico medico = new Medico(
-            "MedicoTeste", "7777-7777", "medico@email.com", "senhaMed", "Cardiologia"
+            "MedicoTeste", "77777777", "medico@email.com", "senhaMed", "Cardiologia"
         );
         medico.salvarDadosArquivo();
         return medico;
+    }
+
+    public static Medicamento criarMedicamento() {
+        return new Medicamento("Dipirona", 10.0f, "500mg", "Comprimido", "Seco", false);
     }
 }

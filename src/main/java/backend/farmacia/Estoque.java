@@ -19,9 +19,7 @@ public class Estoque {
         this.listaEstoque.add(itemEstoque);
     }
 
-    public void removerMedicamentoEstoque(ItemEstoque itemEstoque){
-        this.listaEstoque.remove(itemEstoque);
-    }
+
 
     public void atualizarQntMedicamento(Medicamento medicamento, int novaQuantidade){
         for (ItemEstoque itemEstoque : this.listaEstoque){

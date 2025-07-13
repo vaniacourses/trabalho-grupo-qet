@@ -19,19 +19,20 @@ public class PessoaJuridica extends Pessoa{
 
     public static String nomeArquivoFarmacias = "src\\main\\java\\backend\\farmacia\\RegistroFarmacias.txt";
 
-    public static String basePathEstoque = "src\\main\\java\\backend\\farmacia\\estoquesFarmacias\\";
+    public static String basePathEstoque = "src\\main\\java\\backend\\farmacia\\estoquesFarmacias";
     
     private String cnpj;
     private Endereco endereco;
     private Estoque estoque;
     private Agenda contatosClientes;
-    private String nomeArquivoEstoque = basePathEstoque + "Estoque" + this.getCnpj() + ".txt";
+    private String nomeArquivoEstoque;
 
 
     public PessoaJuridica(String nome, String telefone, String email, String senha, String cnpj, Endereco endereco){
         super(nome, telefone, email, senha);
         this.cnpj = cnpj;
         this.endereco = endereco;
+        this.nomeArquivoEstoque = basePathEstoque + "\\Estoque" + this.getCnpj() + ".txt";
     }
 
     public String getCnpj(){
@@ -142,6 +143,7 @@ public class PessoaJuridica extends Pessoa{
         }
         
         String outrosValores = String.join(",", listaValoresAtributos);
+        System.out.println(outrosValores);
         farmaciaString += "," + outrosValores;
         return farmaciaString;
 
@@ -171,8 +173,10 @@ public class PessoaJuridica extends Pessoa{
                 bw.newLine();
             }
             bw.close();
+            System.out.println("estoque salvo com sucesso!");
         }
         catch(IOException e){
+            System.out.println(getNomeArquivoEstoque());
             System.out.println("erro nao foi possivel salvar no arquivo");
             e.printStackTrace();
         }
@@ -182,6 +186,7 @@ public class PessoaJuridica extends Pessoa{
         Estoque estoqueTemp = this.getEstoque();
 
         if (estoqueTemp == null){
+            System.out.println("entrou aqui");
             estoqueTemp = new Estoque();
         }
 
@@ -195,12 +200,10 @@ public class PessoaJuridica extends Pessoa{
         }
         Estoque estoqueTemp = this.getEstoque();
 
-        for (ItemEstoque itemEstoque : estoqueTemp.listaEstoque){
-            if (itemEstoque.getMedicamento().getNome().equals(nomeMedicamento)){
-                estoqueTemp.removerMedicamentoEstoque(itemEstoque);
-                this.setEstoque(estoqueTemp, true);
-            }
-        }
+        estoqueTemp.listaEstoque.removeIf(
+            itemEstoque -> itemEstoque.getMedicamento().getNome().equals(nomeMedicamento)
+        );
+        this.setEstoque(estoqueTemp, true);
     }
 
     public void atualizarQntMedicamentoEstoque(Medicamento medicamento, int novaQuantidade){
@@ -259,11 +262,15 @@ public class PessoaJuridica extends Pessoa{
                     String nome = dadosLinha[0];
                     String cnpj = dadosLinha[4];
                     Endereco endereco = Endereco.stringToEndereco(dadosLinha[5]);
+                    for( int i = 0; i < dadosLinha.length; i++){
+                        System.out.println("DADOS LINHA " + i + ": " + dadosLinha[i]);
+                    }
 
                     PessoaJuridica farmacia = new PessoaJuridica(nome, telefone, email, senha, cnpj, endereco);
 
                     if (!dadosLinha[6].equals("null")){
                         String nomeArquivoEstoque = dadosLinha[6];
+                        System.out.println("NOME ARQUIVO ESTOQUE " + nomeArquivoEstoque);
                         Estoque estoque = resgatarEstoqueArquivo(nomeArquivoEstoque);
                         farmacia.setEstoque(estoque, false);
                     }

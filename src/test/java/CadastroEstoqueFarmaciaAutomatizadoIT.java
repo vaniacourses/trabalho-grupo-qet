@@ -9,13 +9,13 @@ import base.BaseAutomatizationTest;
 import frontend.EntrarFarmacia;
 import frontend.EstoqueFarmacia;
 import frontend.HomeDaFarmacia;
-import utils.UsuariosBuilder;
+import utils.BuilderUtils;
 
 public class CadastroEstoqueFarmaciaAutomatizadoIT extends BaseAutomatizationTest {
 
     @Test
     void testCadastroEstoqueFarmacia() throws InterruptedException {
-        PessoaJuridica farmacia = UsuariosBuilder.criarPessoaJuridica();
+        PessoaJuridica farmacia = BuilderUtils.criarPessoaJuridica();
         inicioWindow.button("jButton4").click();
 
         FrameFixture entrarFarmacia = findFrame(EntrarFarmacia.class);

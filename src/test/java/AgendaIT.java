@@ -2,7 +2,7 @@ import backend.Agenda;
 import backend.usuario.Medico;
 import backend.usuario.PessoaFisica;
 import utils.AmbienteTemporario;
-import utils.UsuariosBuilder;
+import utils.BuilderUtils;
 import backend.FuncoesArquivos;
 import backend.farmacia.PessoaJuridica;
 
@@ -42,7 +42,7 @@ class AgendaIT {
     @Test
     void testStringToAgendaPessoa() {
 
-        UsuariosBuilder.criarPessoaFisica();
+        BuilderUtils.criarPessoaFisica();
 
         Agenda agendaPessoa = Agenda.stringToAgenda("joao@email.com", "", "usuario", true, true);
         assertEquals(1, agendaPessoa.getContatos().size());
@@ -52,7 +52,7 @@ class AgendaIT {
     @Test
     void testStringToAgendaFarmacia() {
 
-        UsuariosBuilder.criarPessoaJuridica();
+        BuilderUtils.criarPessoaJuridica();
 
         Agenda agendaFarmacia = Agenda.stringToAgenda("farmacia@email.com", "senhaFarm", "farmacia", true, true);
         assertEquals(1, agendaFarmacia.getContatos().size());
@@ -61,7 +61,7 @@ class AgendaIT {
 
     void testStringToAgendaMedico() {
 
-        UsuariosBuilder.criarMedico();
+        BuilderUtils.criarMedico();
 
         Agenda agendaMedico = Agenda.stringToAgenda("medico@email.com", "senhaMed", "medico", true, true);
         assertEquals(1, agendaMedico.getContatos().size());
@@ -71,7 +71,7 @@ class AgendaIT {
     @Test
     void testAdicionarPessoaFisicaNaAgenda() {
 
-        PessoaFisica pessoa = UsuariosBuilder.criarPessoaFisica();
+        PessoaFisica pessoa = BuilderUtils.criarPessoaFisica();
 
         agenda.adicionarContato(pessoa);
 
@@ -83,7 +83,7 @@ class AgendaIT {
     @Test
     void testAdicionarFarmaciaNaAgenda() {
 
-        PessoaJuridica farmacia = UsuariosBuilder.criarPessoaJuridica();
+        PessoaJuridica farmacia = BuilderUtils.criarPessoaJuridica();
 
         agenda.adicionarContato(farmacia);
 
@@ -95,7 +95,7 @@ class AgendaIT {
     @Test
     void testAdicionarMedicoNaAgenda() {
 
-        Medico medico = UsuariosBuilder.criarMedico();
+        Medico medico = BuilderUtils.criarMedico();
 
         agenda.adicionarContato(medico);
 
@@ -107,7 +107,7 @@ class AgendaIT {
     @Test
     void testAlterarTelefonePessoaFisicaNaAgenda() {
 
-        PessoaFisica pessoa = UsuariosBuilder.criarPessoaFisica();
+        PessoaFisica pessoa = BuilderUtils.criarPessoaFisica();
 
         Agenda agenda = new Agenda();
         agenda.adicionarContato(pessoa);
@@ -121,7 +121,7 @@ class AgendaIT {
     @Test
     void testRemoverContatoEPersistirAgenda() {
 
-        PessoaFisica pessoa = UsuariosBuilder.criarPessoaFisica();
+        PessoaFisica pessoa = BuilderUtils.criarPessoaFisica();
 
         agenda = new Agenda();
         agenda.adicionarContato(pessoa);
