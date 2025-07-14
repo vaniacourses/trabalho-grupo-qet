@@ -1,3 +1,4 @@
 target/
 apache-maven-*/
 lib/
+.scannerwork/

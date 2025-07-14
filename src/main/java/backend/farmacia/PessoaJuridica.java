@@ -1,16 +1,13 @@
 package backend.farmacia;
 
 import backend.Pessoa;
-import backend.farmacia.Estoque;
 import backend.usuario.PessoaFisica;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.HashMap;
 import java.io.*;
 
 import backend.Agenda;
-import backend.Autenticacao;
 import backend.Endereco;
 import backend.FuncoesArquivos;
 import backend.Medicamento;
@@ -52,7 +49,7 @@ public class PessoaJuridica extends Pessoa{
 
     public void setEndereco(Endereco novoEndereco, boolean modificarArquivo){
         this.endereco = novoEndereco;
-        if (modificarArquivo == true){
+        if (modificarArquivo){
             FuncoesArquivos.alterarInfoArquivo(nomeArquivoFarmacias, this.getNome(), 5, novoEndereco.toString());
         }
     }
@@ -63,7 +60,7 @@ public class PessoaJuridica extends Pessoa{
 
     public void setEstoque(Estoque novoEstoque, boolean modificarArquivo){
         this.estoque = novoEstoque;
-        if (modificarArquivo == true){
+        if (modificarArquivo){
             this.salvarEstoqueArquivo();
         }
     }
@@ -74,7 +71,7 @@ public class PessoaJuridica extends Pessoa{
 
     public void setContatosClientes(Agenda novaAgenda, boolean modificarArquivo){
         this.contatosClientes = novaAgenda;
-        if (modificarArquivo == true){
+        if (modificarArquivo){
             FuncoesArquivos.alterarInfoArquivo(nomeArquivoFarmacias, this.getNome(), 7, this.getContatosClientes().toString());
         }
     }
@@ -109,7 +106,7 @@ public class PessoaJuridica extends Pessoa{
 
         String farmaciaString = this.PessoaToString();
 
-        ArrayList<String> listaValoresAtributos = new ArrayList<String>();
+        ArrayList<String> listaValoresAtributos = new ArrayList<>();
         
         if (this.getCnpj() != null){
             listaValoresAtributos.add(this.getCnpj());
@@ -174,7 +171,6 @@ public class PessoaJuridica extends Pessoa{
             bw.close();
         }
         catch(IOException e){
-            System.out.println("erro nao foi possivel salvar no arquivo");
             e.printStackTrace();
         }
     }
@@ -231,12 +227,10 @@ public class PessoaJuridica extends Pessoa{
                 estoque.addMedicamentoEstoque(itemEstoque);
                 linha = br.readLine();
             }
-            System.out.println("estoque recuperado com sucesso!");
             br.close();
             return estoque;
         }
         catch (IOException e){
-            System.out.println("erro, não é possível recuperar o estoque");
             e.printStackTrace();
             return null;
         }
@@ -253,7 +247,7 @@ public class PessoaJuridica extends Pessoa{
                 String email = dadosLinha[2];
                 String senha = dadosLinha[3];
 
-                if (email.equals(emailFarmacia) && (ignorarSenha == true || senha.equals(senhaFornecida))){
+                if (email.equals(emailFarmacia) && (ignorarSenha|| senha.equals(senhaFornecida))){
                     String telefone = dadosLinha[1];
                     String nome = dadosLinha[0];
                     String cnpj = dadosLinha[4];
@@ -267,7 +261,7 @@ public class PessoaJuridica extends Pessoa{
                         farmacia.setEstoque(estoque, false);
                     }
 
-                    if (!dadosLinha[7].equals("null") && ignorarAgenda == false){
+                    if (!dadosLinha[7].equals("null") && Boolean.TRUE.equals(!ignorarAgenda)){
                         Agenda agenda = Agenda.stringToAgenda(dadosLinha[7], senha, "usuario", true, true);
                         farmacia.setContatosClientes(agenda, false);
                     }
@@ -277,12 +271,10 @@ public class PessoaJuridica extends Pessoa{
                 
                 linha = br.readLine();
             }
-            System.out.println("erro, n foi possivel resgatar uma farmacia com esse nome");
             br.close();
             return null;
         }
         catch(Exception e){
-            System.out.println("Erro, n foi possivel recuperar a farmacia do arquivo");
             e.printStackTrace();
             return null;
         }

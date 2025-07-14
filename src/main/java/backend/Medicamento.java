@@ -101,7 +101,7 @@ public class Medicamento implements Comparable<Medicamento>{
 
     @Override
     public String toString(){
-        ArrayList<String> listaValoresAtributos = new ArrayList<String>();
+        ArrayList<String> listaValoresAtributos = new ArrayList<>();
         listaValoresAtributos.add(this.getNome());
         listaValoresAtributos.add(String.valueOf(this.getPreco()));
 
@@ -123,8 +123,7 @@ public class Medicamento implements Comparable<Medicamento>{
             listaValoresAtributos.add(valorRestricao);
         }
 
-        String medicamentoString = String.join(",", listaValoresAtributos);
-        return medicamentoString;
+        return String.join(",", listaValoresAtributos);
     }
 
     @Override

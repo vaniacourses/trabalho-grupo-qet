@@ -2,13 +2,14 @@ package backend;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import backend.farmacia.PessoaJuridica;
 import backend.usuario.Medico;
 import backend.usuario.PessoaFisica;
 
 public class Agenda {
-    private ArrayList<Pessoa> contatos = new ArrayList<>();
+    private List<Pessoa> contatos = new ArrayList<>();
 
     private int encontraContato(String nome) {
         if (nome == null) {
@@ -29,7 +30,6 @@ public class Agenda {
             throw new IllegalArgumentException("É necessário informar um contato válido");
         } else {
             contatos.add(contato);
-            System.out.println("Contato Adicionado!");
         }
     }
 
@@ -40,11 +40,9 @@ public class Agenda {
 
         int pos = encontraContato(nome);
         if (pos == -1) {
-            System.out.println("Contato não encontrado! A alteração não foi realizada.");
             return false;
         } else {
             contatos.get(pos).setNome(novoNome);
-            System.out.println("O nome de " + contatos.get(pos).getNome() + " foi alterado!");
         }
         return true;
     }
@@ -56,11 +54,9 @@ public class Agenda {
 
         int pos = encontraContato(nome);
         if (pos == -1) {
-            System.out.println("Contato não encontrado! A alteração não foi realizada.");
             return false;
         } else {
             contatos.get(pos).setTelefone(novoTelefone);
-            System.out.println("O telefone de " + contatos.get(pos).getNome() + " foi alterado!");
         }
         return true;
     }
@@ -72,11 +68,9 @@ public class Agenda {
 
         int pos = encontraContato(nome);
         if (pos == -1) {
-            System.out.println("Contato não encontrado! A alteração não foi realizada.");
             return false;
         } else {
             contatos.get(pos).setParticularidade(novaParticularidade);
-            System.out.println("O atributo de " + contatos.get(pos).getNome() + " foi alterado!");
         }
         return true;
     }
@@ -88,11 +82,9 @@ public class Agenda {
 
         int pos = encontraContato(nome);
         if (pos == -1) {
-            System.out.println("Contato não encontrado! A alteração não foi realizada.");
             return false;
         } else {
             contatos.get(pos).setEmail(novoEmail);
-            System.out.println("O endereço de " + contatos.get(pos).getNome() + " foi alterado!");
         }
         return true;
     }
@@ -104,36 +96,30 @@ public class Agenda {
 
         int pos = encontraContato(nome);
         if (pos == -1) {
-            System.out.println("Contato não encontrado!");
             return false;
         } else {
-            Pessoa contatoRemovido = contatos.remove(pos);
-            System.out.println("Contato removido: " + contatoRemovido.getNome());
+            contatos.remove(pos);
         }
         return true;
     }
 
     private void ordenarListaDeContatos() {
         // Requer que Pessoa implemente Comparable!
-        try {
-            Collections.sort(contatos);
-        } catch (ClassCastException e) {
-            System.out.println("Ordenação não realizada: Classe Pessoa precisa implementar Comparable.");
-        }
+        Collections.sort(contatos);
     }
 
-    public ArrayList<Pessoa> getContatos() {
+    public List<Pessoa> getContatos() {
         ordenarListaDeContatos();
         return contatos;
     }
 
-    public void setContatos(ArrayList<Pessoa> novosContatos) {
+    public void setContatos(List<Pessoa> novosContatos) {
         this.contatos = novosContatos;
     }
 
     @Override
     public String toString() {
-        if (this.getContatos().size() == 0) {
+        if (this.getContatos().isEmpty()) {
             return "null";
         } else {
             ArrayList<String> listaNomesAgenda = new ArrayList<>();
@@ -142,8 +128,7 @@ public class Agenda {
                 listaNomesAgenda.add(pessoa.getEmail());
             }
 
-            String contatosString = String.join("/", listaNomesAgenda);
-            return contatosString;
+            return String.join("/", listaNomesAgenda);
         }
     }
 

@@ -2,7 +2,6 @@ import backend.Agenda;
 import backend.Endereco;
 import backend.usuario.Medico;
 import backend.usuario.PessoaFisica;
-import junit.framework.Assert;
 import utils.AmbienteTemporario;
 import utils.BuilderUtils;
 import backend.FuncoesArquivos;
@@ -13,7 +12,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.booleanThat;
 
 import java.nio.file.Path;
 import java.util.List;
@@ -113,10 +111,10 @@ class AgendaIT {
 
         PessoaFisica pessoa = BuilderUtils.criarPessoaFisica();
 
-        Agenda agenda = new Agenda();
-        agenda.adicionarContato(pessoa);
+        Agenda novaAgenda = new Agenda();
+        novaAgenda.adicionarContato(pessoa);
 
-        boolean resultado = agenda.alterarTelContato("João", "9999-9999");
+        boolean resultado = novaAgenda.alterarTelContato("João", "9999-9999");
 
         assertTrue(resultado);
         assertEquals("9999-9999", pessoa.getTelefone());
@@ -230,7 +228,7 @@ void testGetContatosOrdenados() {
     agenda.adicionarContato(pessoa3);
 
     // Obtém a lista e verifica se está ordenada
-    java.util.ArrayList<Pessoa> contatos = agenda.getContatos();
+    List<Pessoa> contatos = agenda.getContatos();
     
     assertEquals(3, contatos.size());
     assertEquals(pessoa2.getNome(), contatos.get(0).getNome());
