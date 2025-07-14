@@ -1,15 +1,19 @@
 import backend.Agenda;
+import backend.Endereco;
 import backend.usuario.Medico;
 import backend.usuario.PessoaFisica;
+import junit.framework.Assert;
 import utils.AmbienteTemporario;
 import utils.BuilderUtils;
 import backend.FuncoesArquivos;
+import backend.Pessoa;
 import backend.farmacia.PessoaJuridica;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.booleanThat;
 
 import java.nio.file.Path;
 import java.util.List;
@@ -58,7 +62,7 @@ class AgendaIT {
         assertEquals(1, agendaFarmacia.getContatos().size());
         assertEquals("farmacia@email.com", agendaFarmacia.getContatos().get(0).getEmail());
     }
-
+    @Test
     void testStringToAgendaMedico() {
 
         BuilderUtils.criarMedico();
@@ -143,4 +147,94 @@ class AgendaIT {
 
         assertEquals("null", resultado);
     }
+
+    @Test
+    void testAlterarContato() {
+        PessoaFisica pessoa = BuilderUtils.criarPessoaFisica();
+        agenda.adicionarContato(pessoa);
+        PessoaFisica pessoa2 = new BuilderUtils.PessoaFisicaBuilder().nome("pedro").build();
+        agenda.adicionarContato(pessoa2);
+        PessoaFisica pessoa3 = new BuilderUtils.PessoaFisicaBuilder().nome("maria").build();
+        agenda.adicionarContato(pessoa3);
+
+        agenda.alterarNomeContato(pessoa3.getNome(), "teste");
+
+        assertNotNull(agenda.getContatos());
+        assertEquals(3, agenda.getContatos().size());
+        assertEquals(agenda.getContatos().get(2).getNome(), "teste");
+
+        agenda.alterarEmailContato(pessoa.getNome(), "megateste");
+        assertEquals("megateste", agenda.getContatos().get(0).getEmail());
+        agenda.alterarParticularidadeContato(pessoa2.getNome(), new Endereco("Rua Nova", "200", "Casa 1", "Bairro", "Cidade", "UF", "Brasil", "02000-000"));
+        assertEquals("Rua Nova/200/Casa 1/Bairro/Cidade/UF/Brasil/02000-000", agenda.getContatos().get(1).getParticularidade().toString());
+        agenda.alterarTelContato(pessoa2.getNome(), "99999999");
+        assertEquals("99999999", agenda.getContatos().get(1).getTelefone());
+    }
+
+    @Test
+    void testAlterarContatoInvalido() {
+        PessoaFisica pessoa = BuilderUtils.criarPessoaFisica();
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            agenda.alterarNomeContato(null, null);
+        });
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            agenda.alterarNomeContato(null, "teste");
+        });
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            agenda.alterarNomeContato(pessoa.getNome(), null);
+        });
+
+        agenda.adicionarContato(pessoa);
+        assertFalse(agenda.alterarNomeContato("nsei", "nah"));
+    }
+
+    @Test
+    void testRemoverContrato(){
+        PessoaFisica pessoa = BuilderUtils.criarPessoaFisica();
+        agenda.adicionarContato(pessoa);
+
+        boolean resultado = agenda.removerContato("João");
+        assertTrue(resultado);
+        assertEquals(0, agenda.getContatos().size());
+
+        // Verifica se o contato foi removido
+        assertFalse(agenda.getContatos().contains(pessoa));
+    }
+
+    @Test
+    void testRemoverContatoInvalido() {
+        PessoaFisica pessoa = BuilderUtils.criarPessoaFisica();
+        agenda.adicionarContato(pessoa);
+
+        boolean resultado = agenda.removerContato("Inexistente");
+        assertFalse(resultado);
+        assertEquals(1, agenda.getContatos().size());
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            agenda.removerContato(null);
+        });
+    }
+
+@Test
+void testGetContatosOrdenados() {
+    // Adiciona contatos fora de ordem alfabética
+    PessoaFisica pessoa1 = new BuilderUtils.PessoaFisicaBuilder().nome("Beto").build();
+    PessoaFisica pessoa2 = new BuilderUtils.PessoaFisicaBuilder().nome("Ana").build();
+    PessoaFisica pessoa3 = new BuilderUtils.PessoaFisicaBuilder().nome("Carla").build();
+
+    agenda.adicionarContato(pessoa1);
+    agenda.adicionarContato(pessoa2);
+    agenda.adicionarContato(pessoa3);
+
+    // Obtém a lista e verifica se está ordenada
+    java.util.ArrayList<Pessoa> contatos = agenda.getContatos();
+    
+    assertEquals(3, contatos.size());
+    assertEquals(pessoa2.getNome(), contatos.get(0).getNome());
+    assertEquals(pessoa1.getNome(), contatos.get(1).getNome());
+    assertEquals(pessoa3.getNome(), contatos.get(2).getNome());
+}
 }

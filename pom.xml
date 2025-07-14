@@ -105,6 +105,15 @@
             <param>AgendaIT</param>
         </targetTests>
     </configuration>
+        <executions>
+        <execution>
+            <id>pitest-report</id>
+            <phase>verify</phase>
+            <goals>
+                <goal>mutationCoverage</goal>
+            </goals>
+        </execution>
+    </executions>
 </plugin>
         </plugins>
     </build>

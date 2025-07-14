@@ -143,7 +143,6 @@ public class PessoaJuridica extends Pessoa{
         }
         
         String outrosValores = String.join(",", listaValoresAtributos);
-        System.out.println(outrosValores);
         farmaciaString += "," + outrosValores;
         return farmaciaString;
 
@@ -173,10 +172,8 @@ public class PessoaJuridica extends Pessoa{
                 bw.newLine();
             }
             bw.close();
-            System.out.println("estoque salvo com sucesso!");
         }
         catch(IOException e){
-            System.out.println(getNomeArquivoEstoque());
             System.out.println("erro nao foi possivel salvar no arquivo");
             e.printStackTrace();
         }
@@ -186,7 +183,6 @@ public class PessoaJuridica extends Pessoa{
         Estoque estoqueTemp = this.getEstoque();
 
         if (estoqueTemp == null){
-            System.out.println("entrou aqui");
             estoqueTemp = new Estoque();
         }
 
@@ -262,15 +258,11 @@ public class PessoaJuridica extends Pessoa{
                     String nome = dadosLinha[0];
                     String cnpj = dadosLinha[4];
                     Endereco endereco = Endereco.stringToEndereco(dadosLinha[5]);
-                    for( int i = 0; i < dadosLinha.length; i++){
-                        System.out.println("DADOS LINHA " + i + ": " + dadosLinha[i]);
-                    }
 
                     PessoaJuridica farmacia = new PessoaJuridica(nome, telefone, email, senha, cnpj, endereco);
 
                     if (!dadosLinha[6].equals("null")){
                         String nomeArquivoEstoque = dadosLinha[6];
-                        System.out.println("NOME ARQUIVO ESTOQUE " + nomeArquivoEstoque);
                         Estoque estoque = resgatarEstoqueArquivo(nomeArquivoEstoque);
                         farmacia.setEstoque(estoque, false);
                     }
