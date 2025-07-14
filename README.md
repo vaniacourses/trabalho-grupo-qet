@@ -12,4 +12,4 @@ https://docs.google.com/presentation/d/1bVQY4UeCYzAQFG3fTdnUHDlDHgGEMrGPNBpW0xUA
 
 Link para apresentação 2
 
-https://docs.google.com/presentation/d/1bQOsAPmJFIcb0sPQZ5xErOFr_VwOktizWkKcKzTAHvk/edit?usp=sharing
+https://docs.google.com/presentation/d/1nCWveW7pinoR9H9UUwEH9pUVptDsqu2pi0Ot1XTW43Y/edit?usp=sharing
