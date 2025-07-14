@@ -6,6 +6,8 @@ import backend.Medicamento;
 import backend.Agenda;
 import backend.Endereco;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -101,6 +103,9 @@ class PessoaJuridicaIT extends BaseCRUDTest {
     void testAtualizarQuantidadeMedicamentoEstoque() {
         PessoaJuridica farmacia = BuilderUtils.criarPessoaJuridica();
 
+        assertTrue(farmacia.getEstoque() == null || farmacia.getEstoque().listaEstoque.isEmpty());
+        farmacia.atualizarQntMedicamentoEstoque(new Medicamento("segredo"), 10);
+
 
         Medicamento medicamento = BuilderUtils.criarMedicamento();
         farmacia.adicionarMedicamentoEstoque(medicamento, 10);
@@ -112,8 +117,8 @@ class PessoaJuridicaIT extends BaseCRUDTest {
         assertNotNull(recuperada);
         Estoque estoque = recuperada.getEstoque();
         assertNotNull(estoque);
-        assertEquals(1, estoque.listaEstoque.size());
-        assertEquals(30, estoque.listaEstoque.get(0).getQntMedicamento());
+        assertEquals(2, estoque.listaEstoque.size());
+        assertEquals(30, estoque.listaEstoque.get(1).getQntMedicamento());
     }
 
     @Test
@@ -131,17 +136,23 @@ class PessoaJuridicaIT extends BaseCRUDTest {
         assertNotNull(recuperada);
         Estoque estoque = recuperada.getEstoque();
         assertTrue(estoque == null || estoque.listaEstoque.isEmpty());
+        farmacia.retirarMedicamentoEstoque(medicamento.getNome());
+        assertTrue(estoque == null || estoque.listaEstoque.isEmpty());
     }
 
     @Test
     void testAddUsuarioAgenda() {
         PessoaJuridica farmacia = BuilderUtils.criarPessoaJuridica();
         PessoaFisica pessoa = BuilderUtils.criarPessoaFisica();
+        PessoaFisica pessoa2 = new BuilderUtils.PessoaFisicaBuilder().nome("outro").build();
 
         Agenda agenda = new Agenda();
         agenda.adicionarContato(pessoa);
         farmacia.addUsuarioAosContatos(pessoa);
         assertEquals(agenda.getContatos(), farmacia.getContatosClientes().getContatos());
+
+        farmacia.addUsuarioAosContatos(pessoa2);
+        assertEquals(2, farmacia.getContatosClientes().getContatos().size());
     }
 
     @Test
@@ -150,5 +161,14 @@ class PessoaJuridicaIT extends BaseCRUDTest {
 
         Estoque estoque = PessoaJuridica.resgatarEstoqueArquivo("arquivo_errado.txt");
         assertTrue(estoque == null || estoque.listaEstoque.isEmpty());
+    }
+
+    @Test
+    void testResgatarFarmaciaArquivoErro() {
+        PessoaJuridica farmacia = BuilderUtils.criarPessoaJuridica();
+
+        PessoaJuridica recuperada = PessoaJuridica.resgatarFarmaciaArquivo(farmacia.getEmail(), farmacia.getSenha(), false, false);
+        assertNull(recuperada.getEstoque());
+        assertNull(recuperada.getContatosClientes());
     }
 }
