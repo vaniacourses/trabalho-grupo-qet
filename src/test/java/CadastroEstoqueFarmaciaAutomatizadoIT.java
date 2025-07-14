@@ -1,6 +1,3 @@
-import java.util.concurrent.TimeUnit;
-
-import org.assertj.swing.finder.WindowFinder;
 import org.assertj.swing.fixture.FrameFixture;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +11,7 @@ import utils.BuilderUtils;
 public class CadastroEstoqueFarmaciaAutomatizadoIT extends BaseAutomatizationTest {
 
     @Test
-    void testCadastroEstoqueFarmacia() throws InterruptedException {
+    void testCadastroEstoqueFarmacia() {
         PessoaJuridica farmacia = BuilderUtils.criarPessoaJuridica();
         inicioWindow.button("jButton4").click();
 
@@ -47,6 +44,39 @@ public class CadastroEstoqueFarmaciaAutomatizadoIT extends BaseAutomatizationTes
         .requireContents(new String[][] {
             {"teste", "10", "19.99", "nenhuma"}
         });
+    }
+
+    @Test
+    void testCadastroEstoqueFarmaciaComValoresInvalidos() throws InterruptedException {
+        PessoaJuridica farmacia = BuilderUtils.criarPessoaJuridica();
+        inicioWindow.button("jButton4").click();
+
+        FrameFixture entrarFarmacia = findFrame(EntrarFarmacia.class);
+
+        entrarFarmacia.textBox("emailEntradaE").enterText(farmacia.getEmail());
+        entrarFarmacia.textBox("senhaEntradaE").enterText(farmacia.getSenha());
+        entrarFarmacia.button("prox_l").click();
+        entrarFarmacia.requireNotVisible();
+        FrameFixture homeDaFarmacia = findFrame(HomeDaFarmacia.class);
+
+        homeDaFarmacia.requireVisible();
+        homeDaFarmacia.label("nomeFarmaciaH").requireText(farmacia.getNome());
+        homeDaFarmacia.label("cnpjFarmaciaH").requireText(farmacia.getCnpj());
+
+        homeDaFarmacia.button("jButton1").click();
+
+        FrameFixture cadastroEstoque = findFrame(EstoqueFarmacia.class);
+
+        cadastroEstoque.button("jButton1").click();
+        cadastroEstoque.button("salvar").click();
+        cadastroEstoque.requireVisible();
+        cadastroEstoque.textBox("nomeRemedio").enterText("a");
+        cadastroEstoque.textBox("quantidadeRemedio").enterText("a");
+        cadastroEstoque.textBox("precoRemedio").enterText("a");
+        cadastroEstoque.textBox("especificacoesRemedio").enterText("a");
+        cadastroEstoque.button("salvar").click();
+        cadastroEstoque.requireVisible();
+        cadastroEstoque.table("tabelaRemedio").requireRowCount(0);
     }
     
 }
