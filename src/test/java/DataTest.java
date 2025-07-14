@@ -133,7 +133,6 @@ class DataTest {
         try (MockedStatic<Calendar> mocked = mockStatic(Calendar.class)) {
             mocked.when(Calendar::getInstance).thenReturn(mockedCalendar);
 
-                        // Além disso eu não sei porque getHorarios() de uso retornaria os dias porque eu não me aprofundei na implementação
             ArrayList<String> dias = new ArrayList<>();
             dias.add("seg"); // Segunda-feira
             Uso uso = new Uso(null, 0, dias , 0, 0, 0, 0);
@@ -141,7 +140,6 @@ class DataTest {
             assertTrue(Data.horaDoRemedio(uso,10));
             assertFalse(Data.horaDoRemedio(uso,11));
 
-            // Não entendi o uso do ultimaVerficacaoHorario mas quando a hora é 0 verificação hora SEMPRE é false
             assertFalse(Data.horaDoRemedio(uso,0));
             dias.clear();
             dias.add("ter");
