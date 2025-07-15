@@ -6,7 +6,6 @@ import backend.Medicamento;
 import backend.Agenda;
 import backend.Endereco;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -15,7 +14,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.*;
 
 import base.BaseCRUDTest;
-import base.FixedFarmacia;
 import utils.BuilderUtils;
 
 class PessoaJuridicaIT extends BaseCRUDTest {
@@ -68,7 +66,7 @@ class PessoaJuridicaIT extends BaseCRUDTest {
     void testSalvarERecuperarFarmaciaArquivo() {
         PessoaJuridica farmacia = BuilderUtils.criarPessoaJuridica();
 
-        PessoaJuridica recuperada = PessoaJuridica.resgatarFarmaciaArquivo(farmacia.getEmail(), farmacia.getSenha(), false, false);
+        PessoaJuridica recuperada = PessoaJuridica.resgatarFarmaciaArquivo(farmacia.getEmail(), farmacia.getSenha(), false);
 
         assertNotNull(recuperada);
         assertEquals(farmacia.getNome(), recuperada.getNome());
@@ -89,7 +87,7 @@ class PessoaJuridicaIT extends BaseCRUDTest {
         farmacia.salvarDadosArquivo();
 
         // Recuperar do arquivo
-        PessoaJuridica recuperada = FixedFarmacia.resgatarFarmaciaArquivo(farmacia, false, false);
+        PessoaJuridica recuperada = PessoaJuridica.resgatarFarmaciaArquivo(farmacia.getEmail(), farmacia.getSenha(), false);
         assertNotNull(recuperada);
         Estoque estoque = recuperada.getEstoque();
         assertNotNull(estoque);
@@ -113,7 +111,7 @@ class PessoaJuridicaIT extends BaseCRUDTest {
 
         farmacia.salvarDadosArquivo();
 
-        PessoaJuridica recuperada = FixedFarmacia.resgatarFarmaciaArquivo(farmacia, false, false);
+        PessoaJuridica recuperada = PessoaJuridica.resgatarFarmaciaArquivo(farmacia.getEmail(), farmacia.getSenha(), false);
         assertNotNull(recuperada);
         Estoque estoque = recuperada.getEstoque();
         assertNotNull(estoque);
@@ -132,7 +130,7 @@ class PessoaJuridicaIT extends BaseCRUDTest {
 
         farmacia.salvarDadosArquivo();
 
-        PessoaJuridica recuperada = FixedFarmacia.resgatarFarmaciaArquivo(farmacia, false, false);
+        PessoaJuridica recuperada = PessoaJuridica.resgatarFarmaciaArquivo(farmacia.getEmail(), farmacia.getSenha(), false);
         assertNotNull(recuperada);
         Estoque estoque = recuperada.getEstoque();
         assertTrue(estoque == null || estoque.listaEstoque.isEmpty());
@@ -167,7 +165,7 @@ class PessoaJuridicaIT extends BaseCRUDTest {
     void testResgatarFarmaciaArquivoErro() {
         PessoaJuridica farmacia = BuilderUtils.criarPessoaJuridica();
 
-        PessoaJuridica recuperada = PessoaJuridica.resgatarFarmaciaArquivo(farmacia.getEmail(), farmacia.getSenha(), false, false);
+        PessoaJuridica recuperada = PessoaJuridica.resgatarFarmaciaArquivo(farmacia.getEmail(), farmacia.getSenha(), false);
         assertNull(recuperada.getEstoque());
         assertNull(recuperada.getContatosClientes());
     }

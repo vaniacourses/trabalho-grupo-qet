@@ -145,7 +145,7 @@ public class Agenda {
             }
             if (tipoContato.equals("farmacia")) {
                 PessoaJuridica farmacia = PessoaJuridica.resgatarFarmaciaArquivo(
-                        nome, senhaFornecida, ignorarSenha, ignorarAgenda);
+                        nome, senhaFornecida, ignorarSenha);
                 agenda.adicionarContato(farmacia);
             }
 

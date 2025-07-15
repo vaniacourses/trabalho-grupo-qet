@@ -135,7 +135,7 @@ public class EntrarFarmacia extends javax.swing.JFrame {
 
     private void prox_lActionPerformed(java.awt.event.ActionEvent evt) {                                       
         String senha = String.copyValueOf(senhaEntradaE.getPassword());
-        PessoaJuridica farmacia = PessoaJuridica.resgatarFarmaciaArquivo(emailEntradaE.getText(), senha, false, false);
+        PessoaJuridica farmacia = PessoaJuridica.resgatarFarmaciaArquivo(emailEntradaE.getText(), senha, false);
         if (farmacia == null){
             JOptionPane.showMessageDialog(null,"Erro, email ou senha incorretos!");
             EntrarFarmacia novo = new EntrarFarmacia();

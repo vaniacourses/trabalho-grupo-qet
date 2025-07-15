@@ -236,9 +236,10 @@ public class PessoaJuridica extends Pessoa{
         }
     }
 
-    public static PessoaJuridica resgatarFarmaciaArquivo(String emailFarmacia, String senhaFornecida, Boolean ignorarSenha, Boolean ignorarAgenda){
+ public static PessoaJuridica resgatarFarmaciaArquivo(String emailEntrada, String senhaEntrada, Boolean ignorarSenha){
         try{
-            FileReader fr = new FileReader(nomeArquivoFarmacias);
+            System.out.println("entrou0");
+            FileReader fr = new FileReader(PessoaJuridica.nomeArquivoFarmacias);
             BufferedReader br = new BufferedReader(fr);
             String linha = br.readLine();
 
@@ -247,36 +248,30 @@ public class PessoaJuridica extends Pessoa{
                 String email = dadosLinha[2];
                 String senha = dadosLinha[3];
 
-                if (email.equals(emailFarmacia) && (ignorarSenha|| senha.equals(senhaFornecida))){
+                if (email.equals(emailEntrada) && (ignorarSenha || senha.equals(senhaEntrada))){
+                    System.out.println("entrou1");
                     String telefone = dadosLinha[1];
                     String nome = dadosLinha[0];
                     String cnpj = dadosLinha[4];
                     Endereco endereco = Endereco.stringToEndereco(dadosLinha[5]);
+                    PessoaJuridica recuperado = new PessoaJuridica(nome, telefone, email, senha, cnpj, endereco);
 
-                    PessoaJuridica farmacia = new PessoaJuridica(nome, telefone, email, senha, cnpj, endereco);
-
-                    if (!dadosLinha[6].equals("null")){
-                        String nomeArquivoEstoque = dadosLinha[6];
-                        Estoque estoque = resgatarEstoqueArquivo(nomeArquivoEstoque);
-                        farmacia.setEstoque(estoque, false);
-                    }
-
-                    if (!dadosLinha[7].equals("null") && Boolean.TRUE.equals(!ignorarAgenda)){
-                        Agenda agenda = Agenda.stringToAgenda(dadosLinha[7], senha, "usuario", true, true);
-                        farmacia.setContatosClientes(agenda, false);
+                    File arquivoEstoque = new File(recuperado.getNomeArquivoEstoque());
+                    if(arquivoEstoque.exists()){
+                        System.out.println("entrou2");
+                        Estoque estoque = PessoaJuridica.resgatarEstoqueArquivo(recuperado.getNomeArquivoEstoque());
+                        recuperado.setEstoque(estoque,false);
                     }
                     br.close();
-                    return farmacia;
+                    return recuperado;
                 }
-                
                 linha = br.readLine();
             }
             br.close();
             return null;
-        }
-        catch(Exception e){
+        } catch (IOException e) {
             e.printStackTrace();
             return null;
-        }
     }
+}
 }
