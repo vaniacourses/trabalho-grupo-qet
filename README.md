@@ -18,7 +18,7 @@ https://docs.google.com/presentation/d/1nCWveW7pinoR9H9UUwEH9pUVptDsqu2pi0Ot1XTW
 
 Testes de integração estão com nome IT no final e foi usado a técnica top-down.
 
-Para a técnica de teste funcional usamos os critérios de grafo causa-efeito e particionamento em classes de equivalênia para os testes de sistema de cadastro de estoque da farmácia e teste de login.
+Para a técnica de teste funcional usamos o critério de particionamento em classes de equivalênia para os testes de sistema de cadastro de estoque da farmácia e teste de login.
 
 O requisito não funcional testado pelos testes de sistema foi segurança cujo o objetivo era garantir autenticidade básica nos logins, testando valores errados e não aceitos.
 
